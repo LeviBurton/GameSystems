@@ -10,4 +10,17 @@ public class TargetableSystem : MonoBehaviour
     {
         systemsTargetingMe.Clear();
     }
+
+    public void AddWatcher(TargetingSystem watcher)
+    {
+        if (!systemsTargetingMe.Contains(watcher))
+        {
+            systemsTargetingMe.Add(watcher);
+        }
+    }
+
+    public void RemoveWatcher(TargetingSystem watcher)
+    {
+        systemsTargetingMe.Remove(watcher);
+    }
 }

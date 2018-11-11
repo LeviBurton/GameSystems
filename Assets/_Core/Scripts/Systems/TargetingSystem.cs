@@ -6,22 +6,57 @@ public class TargetingSystem : MonoBehaviour
 {
     public TargetableSystem targetable;
 
+    Vector3 targetWorldPosition;
+
+    void OnEnable()
+    {
+        if (targetable)
+        {
+            targetable.AddWatcher(this);
+        }
+    }
+
+    void OnDisable()
+    {
+        if (targetable)
+        {
+            targetable.RemoveWatcher(this);
+        }
+    }
+
+    public void SetTarget(Vector3 worldPosition)
+    {
+        if (targetable)
+        {
+            targetable.RemoveWatcher(this);
+            targetable = null;
+        }
+
+        this.targetWorldPosition = worldPosition;
+    }
+
     public void SetTarget(TargetableSystem newTarget)
     {
         if (targetable != null)
         {
-            targetable.systemsTargetingMe.Remove(this);
+            targetable.RemoveWatcher(this);
         }
 
         targetable = newTarget;
-        newTarget.systemsTargetingMe.Add(this);
+
+        newTarget.AddWatcher(this);
     }
 
-    private void OnDisable()
+    public Vector3 TargetWorldPosition()
     {
-        if (targetable)
+        if (targetable != null)
         {
-            targetable.systemsTargetingMe.Remove(this);
+            return targetable.transform.position;
+        }
+        else
+        {
+            return targetWorldPosition;
         }
     }
+
 }

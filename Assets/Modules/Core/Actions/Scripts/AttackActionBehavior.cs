@@ -10,6 +10,6 @@ public class AttackActionBehavior : ActionBehavior
         var targetingSystem = system.GetComponent<TargetingSystem>();
 
         Debug.LogFormat("{0} {1} AttackActionBehavior", system.name, config.actionName);
-        Debug.LogFormat("\t Target: {0}", targetingSystem.targetable ? targetingSystem.targetable.name : "NO TARGET");
+        Debug.LogFormat("\t Target: {0}", targetingSystem.TargetWorldPosition());
     }
 }

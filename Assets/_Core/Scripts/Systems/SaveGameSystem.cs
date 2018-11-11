@@ -31,7 +31,7 @@ public class SaveGameSystem : MonoBehaviour
     {
         var slots = new List<SaveSlot>();
 
-        DirectoryInfo dirInfo = new DirectoryInfo(GetSlotSavePath());
+        var dirInfo = new DirectoryInfo(GetSlotSavePath());
         var fileInfos = dirInfo.GetFiles().OrderBy(p => p.CreationTime).ToList();
 
         for (int i = 0; i < fileInfos.Count; i++)
