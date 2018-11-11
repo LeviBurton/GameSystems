@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b4014bf2ad32f4a8de2726be7dcfdb, type: 3}
+  m_Name: core_prefabsettings
+  m_EditorClassIdentifier: 
+  heroPrefab: {fileID: 1200493190173732, guid: decbdb0a2a9fecb478798b50090c8ddd, type: 2}
+  npcCharacterPrefab: {fileID: 1200493190173732, guid: 765a6ead69b7806418cf8e9aab8315a1,
+    type: 2}
+  enemyCharacterPrefab: {fileID: 1200493190173732, guid: dd03193053403de4caff5170297a7b45,
+    type: 2}
