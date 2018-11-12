@@ -13,8 +13,10 @@ public class SpellActionBehavior : ActionBehavior
 
         if (spellSystem.availableSpells.Count > 0)
         {
-            // TODO: we need a way to tell the spell system which spell we would like to cast.
-            spellSystem.availableSpells[0].Execute(spellSystem);
+            foreach (var spell in spellSystem.availableSpells)
+            {
+                spell.Execute(spellSystem);
+            }
         }
     }
 }

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b706a9ce69bab4f8b45672668186fd, type: 3}
+  m_Name: vfx_spell_heal
+  m_EditorClassIdentifier: 
+  vfxName: heal vfx
+  behaviors:
+  - {fileID: 11400000, guid: 44e3f312e7e48a14e82376041fce8a95, type: 2}
+  vfxPrefab: {fileID: 1238752989425834, guid: 9d875085ad33eed46a189a3559488691, type: 2}

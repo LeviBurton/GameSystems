@@ -58,5 +58,4 @@ public class TargetingSystem : MonoBehaviour
             return targetWorldPosition;
         }
     }
-
 }
