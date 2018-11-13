@@ -14,6 +14,9 @@ public abstract class SaveGame
     public DateTime dateCreated;
     public int saveNumber;
 
+    public string sceneName;
+    public int sceneBuildIndex;
+
     [NonSerialized] public string slotName;
 }
 

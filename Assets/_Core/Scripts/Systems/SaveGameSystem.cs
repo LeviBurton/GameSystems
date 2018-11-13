@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveSlot
 {
@@ -23,7 +24,7 @@ public class SaveSlot
 public class SaveGameSystem : MonoBehaviour
 {
     public string savePath = @"/Saves";
-    public string defaultSlotName = "Default Slot Name";
+    public string defaultSlotName = "Save";
 
     public RuntimePrefabsConfig runtimePrefabSettings;
 
@@ -42,6 +43,21 @@ public class SaveGameSystem : MonoBehaviour
         }
 
         return slots.Reverse<SaveSlot>().ToList();
+    }
+
+    public string GetNewSaveSlotName()
+    {
+        string name = defaultSlotName;
+        var currentNames = GetSaveSlotNames();
+
+        int i = 1;
+
+        while (currentNames.Contains(name))
+        {
+            name = string.Format("{0} ({1})", defaultSlotName, i++);
+        }
+
+        return name;
     }
 
     public List<string> GetSaveSlotNames()
@@ -75,7 +91,13 @@ public class SaveGameSystem : MonoBehaviour
         {
             throw ex;
         }
-        
+
+        if (!string.IsNullOrEmpty(saveGame.sceneName))
+        {
+            // Load the scene
+            var foo = SceneManager.LoadSceneAsync(saveGame.sceneName, LoadSceneMode.Single);
+        }
+
         // Load all of our save game things.  Note that this could be refactored at some point since
         // there is a lot of code duplication
 

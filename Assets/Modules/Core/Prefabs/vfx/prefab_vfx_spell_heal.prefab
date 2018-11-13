@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4190895683650436}
   - component: {fileID: 114044408713177502}
-  - component: {fileID: 114239013446772312}
   m_Layer: 0
   m_Name: prefab_vfx_spell_heal
   m_TagString: Untagged
@@ -38,6 +37,7 @@ GameObject:
   - component: {fileID: 4589466616948786}
   - component: {fileID: 198548827758942512}
   - component: {fileID: 199932993490872646}
+  - component: {fileID: 114974906557087734}
   m_Layer: 0
   m_Name: prefab_ps_core_heal_particles
   m_TagString: Untagged
@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4467851489190338}
   - component: {fileID: 198753657675046050}
   - component: {fileID: 199154686070192352}
+  - component: {fileID: 114789848152714732}
   m_Layer: 0
   m_Name: prefab_ps_core_vertical_cuts
   m_TagString: Untagged
@@ -279,19 +280,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 1
---- !u!114 &114239013446772312
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1238752989425834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29014cd42b6d273408e0ceefd336c0b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDuration: 8
-  maxDuration: 10
 --- !u!114 &114592641681232352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -305,6 +293,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDuration: 15
   maxDuration: 20
+--- !u!114 &114789848152714732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909375032041326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29014cd42b6d273408e0ceefd336c0b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDuration: 8
+  maxDuration: 10
 --- !u!114 &114839017296656436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,6 +331,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDuration: 15
   maxDuration: 20
+--- !u!114 &114974906557087734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1673724029215938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29014cd42b6d273408e0ceefd336c0b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDuration: 8
+  maxDuration: 10
 --- !u!198 &198013585202327278
 ParticleSystem:
   m_ObjectHideFlags: 1

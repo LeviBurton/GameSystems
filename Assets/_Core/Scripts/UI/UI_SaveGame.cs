@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,14 +13,19 @@ public class UI_SaveGameEvent : UnityEvent<string> { }
 
 public class UI_SaveGame : MonoBehaviour
 {
-    public UI_SaveGameEvent onCancel;
-    public UI_SaveGameEvent onSubmit;
-    public UI_SaveGameEvent onDelete;
+    [Header("Properties")]
+    public string selectedSlotName;
+    public bool addDefaultSlot = false;
 
+    [Header("UI Bindings")]
     public GameObject uiSaveSlotScrollViewContent;
     public GameObject uiSaveSlotPrefab;
     public Text uiInputSlotNameText;
-    public string selectedSlotName;
+
+    [Header("Events")]
+    public UI_SaveGameEvent onCancel;
+    public UI_SaveGameEvent onSubmit;
+    public UI_SaveGameEvent onDelete;
 
     List<GameObject> uiSaveSlots = new List<GameObject>();
     SaveGameSystem saveGameSystem;
@@ -48,6 +54,22 @@ public class UI_SaveGame : MonoBehaviour
         onSubmit.Invoke(selectedSlotName);
     }
 
+    public void AddDefaultSlot()
+    {
+        var slotGameObject = Instantiate(uiSaveSlotPrefab, uiSaveSlotScrollViewContent.transform);
+        var uiSaveSlot = slotGameObject.GetComponent<UI_SaveSlot>();
+
+        uiSaveSlot.uiSaveGame = this;
+        uiSaveSlot.slotName.text = saveGameSystem.GetNewSaveSlotName();
+        uiSaveSlot.slotNum.text = string.Empty;
+        uiSaveSlot.slotDate.text = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+
+        var selectable = uiSaveSlot.GetComponentInChildren<Selectable>();
+        selectable.Select();
+
+        uiSaveSlots.Add(uiSaveSlot.gameObject);
+
+    }
     public void RefreshSlots()
     {
         Debug.Log("RefreshSlots");
@@ -60,6 +82,11 @@ public class UI_SaveGame : MonoBehaviour
         }
 
         uiSaveSlots.Clear();
+
+        if (addDefaultSlot)
+        {
+            AddDefaultSlot();
+        }
 
         for (int i = 0; i < saveSlots.Count; i++)
         {
@@ -89,11 +116,16 @@ public class UI_SaveGame : MonoBehaviour
                 };
 
                 var previousSelectable = uiSaveSlots[uiSaveSlots.Count - 1].GetComponentInChildren<Selectable>();
-                var nextSelectable = uiSaveSlots[1].GetComponentInChildren<Selectable>();
 
-                navigation.selectOnUp = previousSelectable;
-                navigation.selectOnDown = nextSelectable;
-                selectable.navigation = navigation;
+                if (uiSaveSlots.Count > 1)
+                {
+                    var nextSelectable = uiSaveSlots[1].GetComponentInChildren<Selectable>();
+
+                    navigation.selectOnUp = previousSelectable;
+                    navigation.selectOnDown = nextSelectable;
+                    selectable.navigation = navigation;
+                }
+
                 selectable.Select();
             }
 
@@ -104,12 +136,15 @@ public class UI_SaveGame : MonoBehaviour
                     mode = Navigation.Mode.Explicit
                 };
 
-                var previousSelectable = uiSaveSlots[i - 1].GetComponentInChildren<Selectable>();
-                var nextSelectable = uiSaveSlots[0].GetComponentInChildren<Selectable>();
+                if (uiSaveSlots.Count > 1)
+                {
+                    var previousSelectable = uiSaveSlots[i - 1].GetComponentInChildren<Selectable>();
+                    var nextSelectable = uiSaveSlots[0].GetComponentInChildren<Selectable>();
 
-                navigation.selectOnUp = previousSelectable;
-                navigation.selectOnDown = nextSelectable;
-                selectable.navigation = navigation;
+                    navigation.selectOnUp = previousSelectable;
+                    navigation.selectOnDown = nextSelectable;
+                    selectable.navigation = navigation;
+                }
             }
         }
     }

@@ -11,15 +11,17 @@ public class SpellConfig : ScriptableObject
     public Sprite spriteIcon;
 
     public List<SpellBehavior> behaviors = null;
-    public VfxConfig startVfx = null;
     public VfxConfig targetVfx = null;
 
     public void Execute(SpellSystem system)
     {
-        if (startVfx != null)
+        Transform targetTransform = system.transform;
+
+        var target = system.GetComponent<TargetingSystem>().targetable;
+
+        if (target != null)
         {
-            var vfx = Instantiate(startVfx.vfxPrefab, system.transform);
-            vfx.GetComponent<VfxSystem>().config = startVfx;
+            targetTransform = target.transform;
         }
 
         foreach (var behavior in behaviors)
@@ -29,7 +31,7 @@ public class SpellConfig : ScriptableObject
 
         if (targetVfx != null)
         {
-            var vfx = Instantiate(targetVfx.vfxPrefab, system.transform);
+            var vfx = Instantiate(targetVfx.vfxPrefab, targetTransform);
             vfx.GetComponent<VfxSystem>().config = targetVfx;
         }
     }

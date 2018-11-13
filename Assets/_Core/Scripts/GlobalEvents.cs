@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GlobalEvents : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class GlobalEvents : MonoBehaviour
             return;
 
         var saveGame = new MySaveGame(5, slotName);
+
+        saveGame.sceneName = SceneManager.GetActiveScene().name;
 
         // TODO: consider changing this to use interfaces
         onSave.Invoke(saveGame);
