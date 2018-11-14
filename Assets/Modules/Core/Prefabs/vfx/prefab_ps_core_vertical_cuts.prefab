@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4361418046105470}
   - component: {fileID: 198579207964074624}
   - component: {fileID: 199098775338784536}
+  - component: {fileID: 114779405550335724}
   m_Layer: 0
   m_Name: prefab_ps_core_vertical_cuts
   m_TagString: Untagged
@@ -41,6 +42,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &114779405550335724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1069308110933014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29014cd42b6d273408e0ceefd336c0b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDuration: 8
+  maxDuration: 10
 --- !u!198 &198579207964074624
 ParticleSystem:
   m_ObjectHideFlags: 1

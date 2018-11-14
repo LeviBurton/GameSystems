@@ -16,5 +16,4 @@ MonoBehaviour:
   spriteIcon: {fileID: 0}
   behaviors:
   - {fileID: 11400000, guid: c8d4b3532239b6d49990020ade979027, type: 2}
-  startVfx: {fileID: 11400000, guid: 20328686840f40a4ea21f129a3af18a3, type: 2}
-  targetVfx: {fileID: 0}
+  targetVfx: {fileID: 11400000, guid: 20328686840f40a4ea21f129a3af18a3, type: 2}

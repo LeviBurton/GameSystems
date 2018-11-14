@@ -19,8 +19,10 @@ public class UI_SaveGame : MonoBehaviour
 
     [Header("UI Bindings")]
     public GameObject uiSaveSlotScrollViewContent;
-    public GameObject uiSaveSlotPrefab;
     public Text uiInputSlotNameText;
+
+    [Header("Prefabs")]
+    public GameObject uiSaveSlotPrefab;
 
     [Header("Events")]
     public UI_SaveGameEvent onCancel;
@@ -42,6 +44,7 @@ public class UI_SaveGame : MonoBehaviour
 
     void OnDisable()
     {
+        ClearSlots();
     }
 
     public void OnCancel()
@@ -61,7 +64,6 @@ public class UI_SaveGame : MonoBehaviour
 
         uiSaveSlot.uiSaveGame = this;
         uiSaveSlot.slotName.text = saveGameSystem.GetNewSaveSlotName();
-        uiSaveSlot.slotNum.text = string.Empty;
         uiSaveSlot.slotDate.text = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
 
         var selectable = uiSaveSlot.GetComponentInChildren<Selectable>();
@@ -70,18 +72,24 @@ public class UI_SaveGame : MonoBehaviour
         uiSaveSlots.Add(uiSaveSlot.gameObject);
 
     }
-    public void RefreshSlots()
+
+    public void ClearSlots()
     {
-        Debug.Log("RefreshSlots");
-
-        var saveSlots = saveGameSystem.GetSaveSlots();
-
         foreach (var slot in uiSaveSlots)
         {
             DestroyImmediate(slot);
         }
 
         uiSaveSlots.Clear();
+    }
+
+    public void RefreshSlots()
+    {
+        Debug.Log("RefreshSlots");
+
+        ClearSlots();
+
+        var saveSlots = saveGameSystem.GetSaveSlots();
 
         if (addDefaultSlot)
         {
@@ -96,7 +104,6 @@ public class UI_SaveGame : MonoBehaviour
 
             uiSaveSlot.uiSaveGame = this;
             uiSaveSlot.slotName.text = saveSlot.slotName;
-            uiSaveSlot.slotNum.text = string.Format("{0}", saveSlot.slotNum);
             uiSaveSlot.slotDate.text = saveSlot.slotDate.ToString("MM/dd/yyyy hh:mm tt");
 
             uiSaveSlots.Add(uiSaveSlot.gameObject);

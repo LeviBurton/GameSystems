@@ -101,6 +101,8 @@
     <Compile Include="Assets\_Core\Scripts\Systems\TargetableSystem.cs" />
     <Compile Include="Assets\_Core\Scripts\Systems\TargetingSystem.cs" />
     <Compile Include="Assets\_Core\Scripts\Systems\VfxSystem.cs" />
+    <Compile Include="Assets\_Core\Scripts\UI\UI_ActionBar.cs" />
+    <Compile Include="Assets\_Core\Scripts\UI\UI_ActionSlot.cs" />
     <Compile Include="Assets\_Core\Scripts\UI\UI_Main.cs" />
     <Compile Include="Assets\_Core\Scripts\UI\UI_MainMenu.cs" />
     <Compile Include="Assets\_Core\Scripts\UI\UI_SaveGame.cs" />

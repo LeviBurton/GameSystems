@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionName: Move
   Description: 
-  spriteIcon: {fileID: 0}
+  spriteIcon: {fileID: 21300000, guid: ab2c0effa4522104dbdb381ab0b16a7b, type: 3}
   behaviors:
   - {fileID: 11400000, guid: 921689aa2358a0d4291c9820c11925b4, type: 2}
