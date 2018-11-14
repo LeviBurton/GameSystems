@@ -11,9 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0508f963049deeb48b1c61fb40454c9e, type: 3}
   m_Name: spell_core_burn
   m_EditorClassIdentifier: 
-  spellName: Burn Motherfucker!
+  spellName: Burn
   Description: 
   spriteIcon: {fileID: 21300000, guid: e977c1562987f7e41b442f92c93f4234, type: 3}
   behaviors:
   - {fileID: 11400000, guid: a15224a2b7288e049a281a09fc76c3e1, type: 2}
+  - {fileID: 11400000, guid: 3480385f107267e4e806460ea339dd59, type: 2}
   targetVfx: {fileID: 11400000, guid: fcfd0db46fa865c4c9854a3e5649dd8d, type: 2}

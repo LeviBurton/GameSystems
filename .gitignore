@@ -272,5 +272,5 @@ test_Data/
 Assets/Rewired
 RewiredBackup
 Downloads
-
-StandardAssets
+Library/*
+Assets/AssetStore

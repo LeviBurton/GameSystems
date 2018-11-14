@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0508f963049deeb48b1c61fb40454c9e, type: 3}
   m_Name: spell_core_poison_cloud
   m_EditorClassIdentifier: 
-  spellName: Poison Cloud Motherfucker!
+  spellName: Poison Cloud
   Description: 
-  spriteIcon: {fileID: 0}
+  spriteIcon: {fileID: 21300000, guid: 51e90e2f352d93d49b72bebce22d5c10, type: 3}
   behaviors:
   - {fileID: 11400000, guid: c8d4b3532239b6d49990020ade979027, type: 2}
   targetVfx: {fileID: 11400000, guid: 20328686840f40a4ea21f129a3af18a3, type: 2}
