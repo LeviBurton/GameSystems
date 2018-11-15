@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public UI_Main uiMain = null;
+    public UI_Game uiGame = null;
+
     Player rewiredPlayer = null;
 
     private void OnEnable()
@@ -27,6 +29,16 @@ public class PlayerController : MonoBehaviour
     void ToggleMainMenu()
     {
         uiMain.gameObject.SetActive(!uiMain.gameObject.activeSelf);
+
+        if (uiMain.gameObject.activeSelf)
+        {
+            uiGame.gameObject.SetActive(false);
+        }
+        else
+        {
+            uiGame.gameObject.SetActive(true);
+        }
+
         uiMain.GetComponent<StartSelection>().selectable.Select();
 
         // TODO: consider changing these in OnEnable/OnDisable
