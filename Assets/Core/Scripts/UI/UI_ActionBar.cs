@@ -19,12 +19,15 @@ public class UI_ActionBar : MonoBehaviour
     public HeroSystem owningHero;
     public List<ActionConfig> actions;
     public int maxPages = 4;
+    public int maxSlots = 40;
+    public int slotsPerPage = 10;
 
     [Header("Prefabs")]
     public GameObject actionSlotPrefab;
 
     [Header("UI Bindings")]
     public UI_ActionBarPager actionBarPager;
+    public UI_ActionSlot_Details actionSlotDetails;
 
     [Header("Events")]
     public UI_ToggleActionBarEvent onToggleActionBar;
@@ -39,6 +42,12 @@ public class UI_ActionBar : MonoBehaviour
     private void OnEnable()
     {
         rewiredPlayer = ReInput.players.GetPlayer(0);
+        
+    }
+
+    private void OnDisable()
+    {
+       
     }
 
     public void Start()
@@ -57,10 +66,11 @@ public class UI_ActionBar : MonoBehaviour
         for (int i = 0; i < actions.Count; i++)
         {
             actionSlots[i].SetActionConfig(actions[i]);
-            if (i == 0)
-            {
-                actionSlots[i].GetComponentInChildren<Button>().Select();
-            }
+
+            //if (i == 0)
+            //{
+            //    actionSlots[i].GetComponentInChildren<Button>().Select();
+            //}
         }
     }
 
@@ -72,7 +82,9 @@ public class UI_ActionBar : MonoBehaviour
         if (rewiredPlayer.GetButtonDown("action_toggle_actionbar"))
         {
             isToggled = !isToggled;
+
             UpdateControllerMaps();
+
             onToggleActionBar.Invoke(isToggled);
         }
 
@@ -86,6 +98,7 @@ public class UI_ActionBar : MonoBehaviour
         }
     }
 
+    #region Events
     public void OnPageLeft()
     {
         currentPage--;
@@ -98,12 +111,49 @@ public class UI_ActionBar : MonoBehaviour
         SetPage(currentPage);
     }
 
+    public void OnActionSlotSelected(BaseEventData sender)
+    {
+        var uiActionSlot = sender.selectedObject.GetComponent<UI_ActionSlot>();
+
+        if (!uiActionSlot.actionConfig)
+        {
+            actionSlotDetails.gameObject.SetActive(false);
+            return;
+        }
+
+        actionSlotDetails.SetActionSlot(uiActionSlot);
+   
+        actionSlotDetails.gameObject.SetActive(true);
+
+        Debug.Log(uiActionSlot.actionConfig.actionName);
+    }
+
+    public void OnToggleActionBar(bool toggled)
+    {
+        var actionBarAnim = GetComponent<Animation>();
+
+        if (toggled)
+        {
+            actionBarAnim.Play("UI_ActionBar_Show");
+            actionBarPager.GetComponent<Animation>().Play("UI_ActionBar_Pager_Show");
+            actionSlots[0].GetComponentInChildren<Button>().Select();
+        }
+        else
+        {
+            actionBarAnim.Play("UI_ActionBar_Hide");
+            actionSlotDetails.gameObject.SetActive(false);
+            actionBarPager.GetComponent<Animation>().Play("UI_ActionBar_Pager_Hide");
+            EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
+        }
+    }
+    #endregion
+
     public void SetPage(int page)
     {
         if (currentPage >= maxPages) currentPage = 0;
         if (currentPage < 0) currentPage = maxPages - 1;
 
-        actionBarPager.pageNumberText.text = string.Format("{0}/{1}", currentPage + 1, maxPages);
+        actionBarPager.pageNumberText.text = string.Format("{0}/{1}", currentPage + 1, maxSlots / slotsPerPage);
     }
 
     private void UpdateControllerMaps()
@@ -125,21 +175,4 @@ public class UI_ActionBar : MonoBehaviour
         }
     }
 
-    public void OnToggleActionBar(bool toggled)
-    {
-        var actionBarAnim = GetComponent<Animation>();
-
-        if (toggled)
-        {
-            actionBarAnim.Play("UI_ActionBar_Show");
-            actionBarPager.GetComponent<Animation>().Play("UI_ActionBar_Pager_Show");
-            actionSlots[0].GetComponentInChildren<Button>().Select();
-        }
-        else
-        {
-            actionBarAnim.Play("UI_ActionBar_Hide");
-            actionBarPager.GetComponent<Animation>().Play("UI_ActionBar_Pager_Hide");
-            EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
-        }
-    }
 }

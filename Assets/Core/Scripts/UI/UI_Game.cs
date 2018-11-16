@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 
+// The main UI for the game.  Things like the action bar, etc. will be here.
 public class UI_Game : MonoBehaviour
 {
     [Header("UI Bindings")]

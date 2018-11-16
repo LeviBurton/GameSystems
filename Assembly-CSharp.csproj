@@ -135,8 +135,10 @@
     <Compile Include="Assets\Core\Scripts\Systems\TargetingSystem.cs" />
     <Compile Include="Assets\Core\Scripts\Systems\VfxSystem.cs" />
     <Compile Include="Assets\Core\Scripts\UI\UI_ActionBar.cs" />
+    <Compile Include="Assets\Core\Scripts\UI\UI_ActionBar_Buttons.cs" />
     <Compile Include="Assets\Core\Scripts\UI\UI_ActionBarPager.cs" />
     <Compile Include="Assets\Core\Scripts\UI\UI_ActionSlot.cs" />
+    <Compile Include="Assets\Core\Scripts\UI\UI_ActionSlot_Details.cs" />
     <Compile Include="Assets\Core\Scripts\UI\UI_Game.cs" />
     <Compile Include="Assets\Core\Scripts\UI\UI_Main.cs" />
     <Compile Include="Assets\Core\Scripts\UI\UI_MainMenu.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="Assets\Modules\Core\Actions\Scripts\DodgeActionBehavior.cs" />
     <Compile Include="Assets\Modules\Core\Actions\Scripts\MoveActionBehavior.cs" />
     <Compile Include="Assets\Modules\Core\Actions\Scripts\SpellActionBehavior.cs" />
+    <Compile Include="Assets\Modules\Core\Spells\Scripts\AidSpellBehavior.cs" />
     <Compile Include="Assets\Modules\Core\Spells\Scripts\BurnSpellBehavior.cs" />
     <Compile Include="Assets\Modules\Core\Spells\Scripts\HealSpellBehavior.cs" />
     <Compile Include="Assets\Modules\Core\Spells\Scripts\PoisonCloudSpellBehavior.cs" />

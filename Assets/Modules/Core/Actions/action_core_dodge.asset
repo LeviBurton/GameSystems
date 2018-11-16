@@ -11,8 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e887e4b17fa3346b6c31086fcb63f3, type: 3}
   m_Name: action_core_dodge
   m_EditorClassIdentifier: 
-  actionName: 
-  Description: 
+  actionName: Dodge
+  actionType: Common
+  Description: Do you really want to get hit by your enemies with that?  Dodge them!  Use
+    this simple ability to thwart your enemies attacks.
   spriteIcon: {fileID: 21300000, guid: 7cdfac7a7246d274c8b983fd664158c9, type: 3}
   behaviors:
   - {fileID: 11400000, guid: 05c17e58917254541a409cb56da07239, type: 2}

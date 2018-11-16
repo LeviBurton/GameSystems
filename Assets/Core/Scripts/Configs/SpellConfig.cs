@@ -9,6 +9,8 @@ public class SpellConfig : ScriptableObject
     public string spellName;
     [TextArea(3, 30)] public string Description;
     [PreviewSprite] public Sprite spriteIcon;
+    [Range(1, 9)]
+    public int Level;
 
     [Header("Behaviors")]
     public List<SpellBehavior> behaviors = null;

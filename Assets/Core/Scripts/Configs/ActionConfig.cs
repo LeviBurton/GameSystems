@@ -9,6 +9,7 @@ public class ActionConfig : ScriptableObject
 {
     [Header("Properties")]
     public string actionName;
+    public string actionType;
     [TextArea(3, 30)] public string Description;
     [PreviewSprite] public Sprite spriteIcon;
 

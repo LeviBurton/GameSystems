@@ -267,6 +267,7 @@ Temp/
 Build/
 Build_Data/
 test_Data/
+Builds/
 
 # commercial asset packs
 Assets/Rewired
