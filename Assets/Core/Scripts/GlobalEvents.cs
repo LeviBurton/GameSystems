@@ -48,6 +48,6 @@ public class GlobalEvents : MonoBehaviour
         var saveGame = (MySaveGame) saveGameSystem.LoadGameJson(slotName);
 
         // TODO: consider changing this to use interfaces
-        onLoad.Invoke(saveGame);
+       // onLoad.Invoke(saveGame);
     }
 }

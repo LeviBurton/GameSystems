@@ -71,7 +71,7 @@ public class HeroSystem : MonoBehaviour
         if (globalEvents != null)
         {
             globalEvents.onSave += OnSave;
-            globalEvents.onLoad += OnLoad;
+          //  globalEvents.onLoad += OnLoad;
         }
     }
 
@@ -81,7 +81,7 @@ public class HeroSystem : MonoBehaviour
         if (globalEvents != null)
         {
             globalEvents.onSave -= OnSave;
-            globalEvents.onLoad -= OnLoad;
+           // globalEvents.onLoad -= OnLoad;
         }
     }
 

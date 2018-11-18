@@ -25,6 +25,7 @@ public class SaveGameSystem : MonoBehaviour
 {
     public string savePath = @"/Saves";
     public string defaultSlotName = "Save";
+    private MySaveGame saveGame;
 
     public RuntimePrefabsConfig runtimePrefabSettings;
 
@@ -33,7 +34,7 @@ public class SaveGameSystem : MonoBehaviour
         var slots = new List<SaveSlot>();
 
         var dirInfo = new DirectoryInfo(GetSlotSavePath());
-        var fileInfos = dirInfo.GetFiles().OrderBy(p => p.CreationTime).ToList();
+        var fileInfos = dirInfo.GetFiles().OrderBy(p => p.LastWriteTime).ToList();
 
         for (int i = 0; i < fileInfos.Count; i++)
         {
@@ -65,7 +66,7 @@ public class SaveGameSystem : MonoBehaviour
         var names = new List<string>();
 
         DirectoryInfo dirInfo = new DirectoryInfo(GetSlotSavePath());
-        var fileInfos = dirInfo.GetFiles().OrderByDescending(p => p.CreationTime).ToList();
+        var fileInfos = dirInfo.GetFiles().OrderByDescending(p => p.LastWriteTime).ToList();
 
         foreach (var fileInfo in fileInfos)
         {
@@ -75,33 +76,29 @@ public class SaveGameSystem : MonoBehaviour
         return names;
     }
 
-    public MySaveGame LoadGameJson(string slotName)
+    IEnumerator UnloadSceneAsync(string sceneName)
     {
-        var slotPath = GetSlotJsonPath(slotName);
+        AsyncOperation asyncLoad = SceneManager.UnloadSceneAsync(sceneName);
 
-        Debug.LogFormat("Loading Game from slot: {0}", slotPath);
-
-        MySaveGame saveGame = null;
-
-        try
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
         {
-            saveGame = JsonUtility.FromJson<MySaveGame>(File.ReadAllText(slotPath));
+            yield return null;
         }
-        catch (Exception ex)
+    }
+    IEnumerator LoadAsyncScene(string sceneName)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
         {
-            throw ex;
+            yield return null;
         }
+    }
 
-        if (!string.IsNullOrEmpty(saveGame.sceneName))
-        {
-            // Load the scene
-            var foo = SceneManager.LoadSceneAsync(saveGame.sceneName, LoadSceneMode.Single);
-        }
-
-        // Load all of our save game things.  Note that this could be refactored at some point since
-        // there is a lot of code duplication
-
-
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
         // Setup HeroSystems
         var heroes = FindObjectsOfType<HeroSystem>();
         foreach (var heroRuntime in saveGame.heroRuntimes)
@@ -133,8 +130,6 @@ public class SaveGameSystem : MonoBehaviour
             }
         }
 
-
-
         // Setup EnemySystems
         var enemies = FindObjectsOfType<EnemySystem>();
         foreach (var runtime in saveGame.enemyRuntimes)
@@ -165,6 +160,36 @@ public class SaveGameSystem : MonoBehaviour
                 foundSystem.OnLoad(saveGame);
             }
         }
+    }
+
+    public MySaveGame LoadGameJson(string slotName)
+    {
+        var slotPath = GetSlotJsonPath(slotName);
+
+        Debug.LogFormat("Loading Game from slot: {0}", slotPath);
+
+        MySaveGame saveGame = null;
+
+        try
+        {
+            saveGame = JsonUtility.FromJson<MySaveGame>(File.ReadAllText(slotPath));
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        if (!string.IsNullOrEmpty(saveGame.sceneName))
+        {
+            // TODO: not sure about the need to unload first.
+            StartCoroutine(UnloadSceneAsync(saveGame.sceneName));
+            StartCoroutine(LoadAsyncScene(saveGame.sceneName));
+        }
+
+        // TODO: ugly.
+        this.saveGame = saveGame;
 
         return saveGame;
     }
