@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114701185501000142}
   - component: {fileID: 114571346467188488}
   - component: {fileID: 114445834116930990}
+  - component: {fileID: 114746642936643968}
   m_Layer: 0
   m_Name: prefab_core_hero
   m_TagString: Untagged
@@ -319,6 +320,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableSpells: []
+--- !u!114 &114746642936643968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1200493190173732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03756556db904a94493a38c8512d4c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupId: 0
 --- !u!114 &114780105064997974
 MonoBehaviour:
   m_ObjectHideFlags: 1

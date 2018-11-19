@@ -113,6 +113,7 @@
     <Compile Include="Assets\Core\Scripts\Configs\SpellListDb.cs" />
     <Compile Include="Assets\Core\Scripts\Configs\VfxConfig.cs" />
     <Compile Include="Assets\Core\Scripts\Dice.cs" />
+    <Compile Include="Assets\Core\Scripts\GameCamera.cs" />
     <Compile Include="Assets\Core\Scripts\GlobalEvents.cs" />
     <Compile Include="Assets\Core\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Core\Scripts\PreviewSpriteAttribute.cs" />
@@ -124,7 +125,9 @@
     <Compile Include="Assets\Core\Scripts\Systems\CharacterSystem.cs" />
     <Compile Include="Assets\Core\Scripts\Systems\ClassSystem.cs" />
     <Compile Include="Assets\Core\Scripts\Systems\EnemySystem.cs" />
+    <Compile Include="Assets\Core\Scripts\Systems\GameSystem.cs" />
     <Compile Include="Assets\Core\Scripts\Systems\HealthSystem.cs" />
+    <Compile Include="Assets\Core\Scripts\Systems\HeroGroupSystem.cs" />
     <Compile Include="Assets\Core\Scripts\Systems\HeroSystem.cs" />
     <Compile Include="Assets\Core\Scripts\Systems\LocomotionSystem.cs" />
     <Compile Include="Assets\Core\Scripts\Systems\NpcSystem.cs" />

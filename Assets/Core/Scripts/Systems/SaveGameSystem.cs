@@ -97,40 +97,56 @@ public class SaveGameSystem : MonoBehaviour
         }
     }
 
+    // during the loading of a save game, we need to load the scene defined in the save game first.
+    // we do all of our game initilization in here because we are guarunteed 
+    // the scene is completely loaded.
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Setup HeroSystems
-        var heroes = FindObjectsOfType<HeroSystem>();
-        foreach (var heroRuntime in saveGame.heroRuntimes)
-        {
-            HeroRuntime foundHeroRuntime = null;
-            HeroSystem foundHeroSystem = null;
+        LoadHeroes();
 
-            foreach (var hero in heroes)
+        // Setup EnemySystems
+        LoadEnemies();
+
+        // Setup NpcSystems
+        LoadNpcs();
+    }
+
+    private void LoadNpcs()
+    {
+        var npcs = FindObjectsOfType<NpcSystem>();
+        foreach (var runtime in saveGame.npcRuntimes)
+        {
+            NpcRuntime foundRuntime = null;
+            NpcSystem foundSystem = null;
+
+            foreach (var npc in npcs)
             {
-                var heroSaveGameId = hero.GetComponent<SaveGameIdSystem>().SaveGameId;
-                if (heroSaveGameId == heroRuntime.saveGameId)
+                var npcSaveGameId = npc.GetComponent<SaveGameIdSystem>().SaveGameId;
+                if (npcSaveGameId == runtime.saveGameId)
                 {
-                    foundHeroRuntime = heroRuntime;
-                    foundHeroSystem = hero.GetComponent<HeroSystem>();
+                    foundRuntime = runtime;
+                    foundSystem = npc.GetComponent<NpcSystem>();
                     break;
                 }
             }
 
-            if (foundHeroRuntime == null)
+            if (foundRuntime == null)
             {
-                var spawnedHero = Instantiate(runtimePrefabSettings.heroPrefab, heroRuntime.position, heroRuntime.rotation);
-                spawnedHero.transform.localScale = heroRuntime.scale;
-                spawnedHero.GetComponent<SaveGameIdSystem>().SaveGameId = heroRuntime.saveGameId;
-                spawnedHero.GetComponent<HeroSystem>().OnLoad(saveGame);
+                var spawned = Instantiate(runtimePrefabSettings.npcCharacterPrefab, runtime.position, runtime.rotation);
+                spawned.transform.localScale = runtime.scale;
+                spawned.GetComponent<SaveGameIdSystem>().SaveGameId = runtime.saveGameId;
+                spawned.GetComponent<NpcSystem>().OnLoad(saveGame);
             }
             else
             {
-                foundHeroSystem.OnLoad(saveGame);
+                foundSystem.OnLoad(saveGame);
             }
         }
+    }
 
-        // Setup EnemySystems
+    private void LoadEnemies()
+    {
         var enemies = FindObjectsOfType<EnemySystem>();
         foreach (var runtime in saveGame.enemyRuntimes)
         {
@@ -150,7 +166,7 @@ public class SaveGameSystem : MonoBehaviour
 
             if (foundRuntime == null)
             {
-                var spawned = Instantiate(runtimePrefabSettings.heroPrefab, runtime.position, runtime.rotation);
+                var spawned = Instantiate(runtimePrefabSettings.enemyCharacterPrefab, runtime.position, runtime.rotation);
                 spawned.transform.localScale = runtime.scale;
                 spawned.GetComponent<SaveGameIdSystem>().SaveGameId = runtime.saveGameId;
                 spawned.GetComponent<EnemySystem>().OnLoad(saveGame);
@@ -158,6 +174,39 @@ public class SaveGameSystem : MonoBehaviour
             else
             {
                 foundSystem.OnLoad(saveGame);
+            }
+        }
+    }
+
+    private void LoadHeroes()
+    {
+        var heroesInScene = FindObjectsOfType<HeroSystem>();
+        foreach (var heroRuntime in saveGame.heroRuntimes)
+        {
+            HeroRuntime foundHeroRuntime = null;
+            HeroSystem foundHeroSystem = null;
+
+            foreach (var heroInScene in heroesInScene)
+            {
+                var heroInSceneSaveGameId = heroInScene.GetComponent<SaveGameIdSystem>().SaveGameId;
+                if (heroInSceneSaveGameId == heroRuntime.saveGameId)
+                {
+                    foundHeroRuntime = heroRuntime;
+                    foundHeroSystem = heroInScene.GetComponent<HeroSystem>();
+                    break;
+                }
+            }
+
+            if (foundHeroRuntime == null)
+            {
+                var spawnedHero = Instantiate(runtimePrefabSettings.heroPrefab, heroRuntime.position, heroRuntime.rotation);
+                spawnedHero.transform.localScale = heroRuntime.scale;
+                spawnedHero.GetComponent<SaveGameIdSystem>().SaveGameId = heroRuntime.saveGameId;
+                spawnedHero.GetComponent<HeroSystem>().OnLoad(saveGame);
+            }
+            else
+            {
+                foundHeroSystem.OnLoad(saveGame);
             }
         }
     }
@@ -286,7 +335,6 @@ public class SaveGameSystem : MonoBehaviour
     {
         return Path.Combine(Application.persistentDataPath, savePath);
     }
-
 
     private string GetSlotJsonPath(string slotName)
     {

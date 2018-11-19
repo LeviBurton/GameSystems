@@ -8,29 +8,78 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class LocomotionSystem : MonoBehaviour
 {
-    public Vector3 velocity;
     public float maxForwardSpeed;
     public float maxSideSpeed;
-    public float tmp1;
-    public float tmp2;
+    public bool alignToCamera;
 
-    private CharacterController controller = null;
+    CharacterController unityCharacterController = null;
+    Vector3 velocity;
+    float forwardSpeed;
+    float sideSpeed;
 
     public void OnEnable()
     {
-        controller = GetComponent<CharacterController>();
+        unityCharacterController = GetComponent<CharacterController>();
+        SetSprinting();
     }
 
-    public void SetVelocity(Vector3 newVelocity)
+    void Update()
     {
-        this.velocity = newVelocity;
+        RotateTowardsCurrentVelocity();
+        velocity = unityCharacterController.velocity;
     }
 
-    public void MoveInDirection(Vector3 movementDirection)
+    public void Move(Vector3 movementDirection)
     {
-        movementDirection = transform.TransformDirection(movementDirection);
-        movementDirection = movementDirection * maxForwardSpeed * Time.deltaTime;
+        if (alignToCamera)
+        {
+            var move = new Vector3();
+            var camForward = Camera.main.transform.TransformDirection(Vector3.forward);
+            camForward.y = 0;
+            camForward.Normalize();
+            Vector3 right = new Vector3(camForward.z, 0, -camForward.x);
+            move = movementDirection.z * camForward + movementDirection.x * right;
+            move = move * forwardSpeed * Time.deltaTime;
 
-        controller.Move(movementDirection);
+            unityCharacterController.Move(move);
+        }
+        else
+        {
+            movementDirection = movementDirection.normalized;
+            movementDirection = movementDirection * forwardSpeed * Time.deltaTime;
+
+            unityCharacterController.Move(movementDirection);
+        }
+    }
+
+    void RotateTowardsCurrentVelocity()
+    {
+        var lookRotation = new Vector3(velocity.x, 0, velocity.z);
+        if (lookRotation.magnitude > 0.4f)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotation), Time.deltaTime * 720);
+        }
+    }
+
+    // TODO: consider moving this somewhere else.
+    public bool SetWalking()
+    {
+        forwardSpeed = maxForwardSpeed * 0.2f;
+        sideSpeed = maxSideSpeed * 0.2f;
+        return true;
+    }
+
+    public bool SetRunning()
+    {
+        forwardSpeed = maxForwardSpeed * 0.8f;
+        sideSpeed = maxSideSpeed * 0.8f;
+        return true;
+    }
+
+    public bool SetSprinting()
+    {
+        forwardSpeed = maxForwardSpeed;
+        sideSpeed = maxSideSpeed;
+        return true;
     }
 }

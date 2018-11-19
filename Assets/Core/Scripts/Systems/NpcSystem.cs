@@ -12,7 +12,13 @@ public class NpcSystem : MonoBehaviour
 {
     public NpcRuntime npcRuntime;
 
-    void OnSave(MySaveGame saveGame)
+    void Start()
+    {
+        var gameSystem = FindObjectOfType<GameSystem>();
+        gameSystem.npcs.Add(this);
+    }
+
+    public void OnSave(MySaveGame saveGame)
     {
         Debug.Log("NpcSystem OnSave: " + GetComponent<SaveGameIdSystem>().SaveGameId);
 
@@ -34,7 +40,7 @@ public class NpcSystem : MonoBehaviour
         saveGame.npcRuntimes.Add(npcRuntime);
     }
 
-    void OnLoad(MySaveGame saveGame)
+    public void OnLoad(MySaveGame saveGame)
     {
         Debug.Log("NpcSystem OnLoad");
 

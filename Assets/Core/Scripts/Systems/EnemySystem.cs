@@ -15,6 +15,9 @@ public class EnemySystem : MonoBehaviour
     void Start()
     {
         enemyRuntime = new EnemyRuntime(GetComponent<SaveGameIdSystem>().SaveGameId, null, null);
+
+        var gameSystem = FindObjectOfType<GameSystem>();
+        gameSystem.enemies.Add(this);
     }
 
     void OnEnable()
@@ -23,7 +26,7 @@ public class EnemySystem : MonoBehaviour
         if (globalEvents != null)
         {
             globalEvents.onSave += OnSave;
-            globalEvents.onLoad += OnLoad;
+            //globalEvents.onLoad += OnLoad;
         }
     }
 
@@ -33,7 +36,7 @@ public class EnemySystem : MonoBehaviour
         if (globalEvents != null)
         {
             globalEvents.onSave -= OnSave;
-            globalEvents.onLoad -= OnLoad;
+           // globalEvents.onLoad -= OnLoad;
         }
     }
 

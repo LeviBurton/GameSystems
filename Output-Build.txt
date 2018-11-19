@@ -1,0 +1,17 @@
+﻿1>------ Build started: Project: Assembly-CSharp-firstpass, Configuration: Debug Any CPU ------
+1>  Assembly-CSharp-firstpass -> C:\Projects\GameSystems\Temp\bin\Debug\Assembly-CSharp-firstpass.dll
+2>------ Build started: Project: Assembly-CSharp, Configuration: Debug Any CPU ------
+2>C:\Projects\GameSystems\Assets\AssetStore\Standard Assets\Utility\SimpleActivatorMenu.cs(10,16,10,23): warning CS0618: 'GUIText' is obsolete: 'This component is part of the legacy UI system and will be removed in a future release.'
+2>C:\Projects\GameSystems\Assets\AssetStore\Standard Assets\Utility\TimedObjectDestructor.cs(24,13,24,38): warning CS0618: 'Object.DestroyObject(Object)' is obsolete: 'use Object.Destroy instead.'
+2>C:\Projects\GameSystems\Assets\AssetStore\Standard Assets\Utility\ActivateTrigger.cs(57,33,57,64): warning CS0618: 'Object.DestroyObject(Object)' is obsolete: 'use Object.Destroy instead.'
+2>C:\Projects\GameSystems\Assets\AssetStore\Standard Assets\Utility\WaypointProgressTracker.cs(14,50,14,57): warning CS0649: Field 'WaypointProgressTracker.circuit' is never assigned to, and will always have its default value null
+2>C:\Projects\GameSystems\Assets\AssetStore\Standard Assets\Utility\SmoothFollow.cs(19,17,19,32): warning CS0649: Field 'SmoothFollow.rotationDamping' is never assigned to, and will always have its default value 0
+2>C:\Projects\GameSystems\Assets\Core\Scripts\GlobalEvents.cs(13,25,13,31): warning CS0067: The event 'GlobalEvents.onLoad' is never used
+2>C:\Projects\GameSystems\Assets\AssetStore\Standard Assets\Utility\PlatformSpecificContent.cs(25,34,25,52): warning CS0649: Field 'PlatformSpecificContent.m_BuildTargetGroup' is never assigned to, and will always have its default value
+2>C:\Projects\GameSystems\Assets\AssetStore\Standard Assets\Utility\SmoothFollow.cs(21,17,21,30): warning CS0649: Field 'SmoothFollow.heightDamping' is never assigned to, and will always have its default value 0
+2>C:\Projects\GameSystems\Assets\AssetStore\Standard Assets\Utility\SmoothFollow.cs(10,21,10,27): warning CS0649: Field 'SmoothFollow.target' is never assigned to, and will always have its default value null
+2>C:\Projects\GameSystems\Assets\AssetStore\Standard Assets\Utility\PlatformSpecificContent.cs(31,22,31,44): warning CS0649: Field 'PlatformSpecificContent.m_ChildrenOfThisObject' is never assigned to, and will always have its default value false
+2>  Assembly-CSharp -> C:\Projects\GameSystems\Temp\bin\Debug\Assembly-CSharp.dll
+3>------ Build started: Project: Assembly-CSharp-Editor, Configuration: Debug Any CPU ------
+3>  Assembly-CSharp-Editor -> C:\Projects\GameSystems\Temp\bin\Debug\Assembly-CSharp-Editor.dll
+========== Build: 3 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

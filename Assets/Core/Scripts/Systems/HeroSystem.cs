@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +16,9 @@ public class HeroSystem : MonoBehaviour
     void Start()
     {
         heroRuntime = new HeroRuntime(GetComponent<SaveGameIdSystem>().SaveGameId, null, null);
+
+        var gameSystem = FindObjectOfType<GameSystem>();
+        gameSystem.heroes.Add(this);
     }
 
     public void OnSave(MySaveGame saveGame)
@@ -85,4 +89,8 @@ public class HeroSystem : MonoBehaviour
         }
     }
 
+    internal object ToList()
+    {
+        throw new NotImplementedException();
+    }
 }
