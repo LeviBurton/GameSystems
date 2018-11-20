@@ -81,7 +81,7 @@ public class SaveGameSystem : MonoBehaviour
         AsyncOperation asyncLoad = SceneManager.UnloadSceneAsync(sceneName);
 
         // Wait until the asynchronous scene fully loads
-        while (!asyncLoad.isDone)
+        while (asyncLoad != null && !asyncLoad.isDone)
         {
             yield return null;
         }

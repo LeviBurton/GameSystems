@@ -5,11 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[Serializable]
-public class Input_Vector3Event : UnityEvent<Vector3> { }
-
-[Serializable]
-public class Input_FloatEvent : UnityEvent<float> { }
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,9 +13,9 @@ public class PlayerController : MonoBehaviour
     public UI_Game uiGame = null;
 
     [Header("Events")]
-    public Input_Vector3Event onInputMove;
-    public Input_FloatEvent onCameraRotate;
-    public Input_FloatEvent onCameraZoom;
+    public UnityEvent_Vector3 onInputMove;
+    public UnityEvent_Float onCameraRotate;
+    public UnityEvent_Float onCameraZoom;
 
     Player rewiredPlayer = null;
 

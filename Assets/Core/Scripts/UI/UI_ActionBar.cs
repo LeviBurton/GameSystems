@@ -1,4 +1,5 @@
 ﻿using Rewired;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,6 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class UI_ToggleActionBarEvent : UnityEvent<bool> { }
-
-public class UI_PageLeftEvent : UnityEvent { }
-public class UI_PageRightEvent : UnityEvent { }
 
 public class UI_ActionBar : MonoBehaviour
 {
@@ -30,7 +26,7 @@ public class UI_ActionBar : MonoBehaviour
     public UI_ActionSlot_Details actionSlotDetails;
 
     [Header("Events")]
-    public UI_ToggleActionBarEvent onToggleActionBar;
+    public UnityEvent_Bool onToggleActionBar;
     public UnityEvent onPageLeft;
     public UnityEvent onPageRight;
 
@@ -101,14 +97,12 @@ public class UI_ActionBar : MonoBehaviour
     #region Events
     public void OnPageLeft()
     {
-        currentPage--;
-        SetPage(currentPage);
+        SetPage(--currentPage);
     }
 
     public void OnPageRight()
     {
-        currentPage++;
-        SetPage(currentPage);
+        SetPage(++currentPage);
     }
 
     public void OnActionSlotSelected(BaseEventData sender)
@@ -122,10 +116,7 @@ public class UI_ActionBar : MonoBehaviour
         }
 
         actionSlotDetails.SetActionSlot(uiActionSlot);
-   
         actionSlotDetails.gameObject.SetActive(true);
-
-        Debug.Log(uiActionSlot.actionConfig.actionName);
     }
 
     public void OnToggleActionBar(bool toggled)

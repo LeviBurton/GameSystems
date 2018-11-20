@@ -7,6 +7,7 @@ public static class SaveGameDefaults
     public static string defaultSlotName = "Default Slot";
 }
 
+
 [Serializable]
 public abstract class SaveGame
 {
@@ -20,6 +21,8 @@ public abstract class SaveGame
     [NonSerialized] public string slotName;
 }
 
+// TODO: split the save game out into a header type class (save name, save date, save screen shot, etc.) and the main save data.
+// this will let us load just the header in our load/save game lists.
 [Serializable]
 public class MySaveGame : SaveGame
 {

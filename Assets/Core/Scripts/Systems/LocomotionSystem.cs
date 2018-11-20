@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 // TODO: for now, anything that can move in the world will do it with a 
 // CharacterController, since it takes care of a lot of issues 
@@ -11,6 +13,9 @@ public class LocomotionSystem : MonoBehaviour
     public float maxForwardSpeed;
     public float maxSideSpeed;
     public bool alignToCamera;
+
+    [Header("Events")]
+    public UnityEvent_Vector3 onVelocityUpdated;
 
     CharacterController unityCharacterController = null;
     Vector3 velocity;
@@ -26,11 +31,19 @@ public class LocomotionSystem : MonoBehaviour
     void Update()
     {
         RotateTowardsCurrentVelocity();
+
         velocity = unityCharacterController.velocity;
+
+        // broadcast our velocity to anyone interested.
+        // currently the HumanoidAnimator component listens for this.
+        onVelocityUpdated.Invoke(velocity);
     }
 
     public void Move(Vector3 movementDirection)
     {
+        if (unityCharacterController == null)
+            return;
+
         if (alignToCamera)
         {
             var move = new Vector3();

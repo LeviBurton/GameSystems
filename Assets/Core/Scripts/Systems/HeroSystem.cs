@@ -75,7 +75,6 @@ public class HeroSystem : MonoBehaviour
         if (globalEvents != null)
         {
             globalEvents.onSave += OnSave;
-          //  globalEvents.onLoad += OnLoad;
         }
     }
 
@@ -85,12 +84,6 @@ public class HeroSystem : MonoBehaviour
         if (globalEvents != null)
         {
             globalEvents.onSave -= OnSave;
-           // globalEvents.onLoad -= OnLoad;
         }
-    }
-
-    internal object ToList()
-    {
-        throw new NotImplementedException();
     }
 }

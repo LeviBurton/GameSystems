@@ -8,9 +8,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.Experimental.UIElements;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class UI_SaveGameEvent : UnityEvent<string> { }
-
 public class UI_SaveGame : MonoBehaviour
 {
     [Header("Properties")]
@@ -25,9 +22,9 @@ public class UI_SaveGame : MonoBehaviour
     public GameObject uiSaveSlotPrefab;
 
     [Header("Events")]
-    public UI_SaveGameEvent onCancel;
-    public UI_SaveGameEvent onSubmit;
-    public UI_SaveGameEvent onDelete;
+    public UnityEvent_String onCancel;
+    public UnityEvent_String onSubmit;
+    public UnityEvent_String onDelete;
 
     List<GameObject> uiSaveSlots = new List<GameObject>();
     SaveGameSystem saveGameSystem;
