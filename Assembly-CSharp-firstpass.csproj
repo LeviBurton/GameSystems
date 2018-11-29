@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_2_7;UNITY_2018_2;UNITY_2018;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_EVENT_QUEUE;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;CROSS_PLATFORM_INPUT</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_2_7;UNITY_2018_2;UNITY_2018;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_EVENT_QUEUE;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;CROSS_PLATFORM_INPUT;ODIN_INSPECTOR</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -61,9 +61,129 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\AssetListExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\AttributesOnClassesExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\BoxGroupExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ButtonExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ButtonGroupExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ButtonWithParametersExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ColorPaletteExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\CombineGroupAttributeExample1.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\CombineGroupAttributeExample2.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\CombineGroupAttributeExample3.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\CustomContextMenuExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\CustomValueDrawerExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\DebugSerializationExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\DefaultDrawerChanges.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\DelegateExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\DictionaryExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\DisableContextMenuExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\DisableInEditorAndPlayModeExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\DisplayAsStringExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\DrawWithUnityExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\EnableAndDisableIfExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\EnumPagingExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\EnumToggleButtonsExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\FilePathExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\FolderPathExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\FoldoutGroupAttributeExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\GUIColorExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\HideInEditorAndPlayModeExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\HideLabelExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\HideReferenceObjectPickerExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\HorizontalGroupAttributeExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\IncorrectUseOfOdinSerializeAttributeExamples1.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\IncorrectUseOfOdinSerializeAttributeExamples2.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\IndentExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\InfoBoxExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\InlineButtonExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\InlineEditorExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\InlinePropertyExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\LabelTextExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ListExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\MinMaxSliderExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\MinMaxValueValueExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\MultiLinePropertyExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\NoBoilerplate.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\OnInspectorGUIExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\OnValueChangedExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\PrefabRelatedAttributesExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ProgressBarExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\PropertyOrderExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\PropertyTooltipExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ReadOnlyExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\RequiredExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ResponsiveButtonGroupExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\SceneAndAssetsOnlyExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\SerializeAnything.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ShowAndHideIfExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ShowDrawerChainExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ShowInInspectorExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ShowPropertiesInTheInspectorExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\StaticInspectorsExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\SuffixLabelExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\TabExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\TableListExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\TableMatrixExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\TitleExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\TitleGroupExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ToggleExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ToggleLeftExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\TwoDimensionalArrayExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\TypeFilterExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\UnityPreviewFieldsExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ValidateInputExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\ValueDropdownExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\VerticalGroupExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\WrapExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Attribute Processors\Scripts\AttributeProcessorForListItemsExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Attribute Processors\Scripts\AttributeProcessorPriorityExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Attribute Processors\Scripts\Bar.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Attribute Processors\Scripts\BasicAttributeProcessorExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Attribute Processors\Scripts\CustomAttributeProcessorLocatorExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Attribute Processors\Scripts\CustomizeDictionaryKeyValueExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Attribute Processors\Scripts\Foo.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Attribute Processors\Scripts\PutAttributesOnAnyType.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Attribute Processors\Scripts\SelfAndChildrenExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Attribute Processors\Scripts\TabGroupByDeclaringType.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Drawers\Scripts\CustomDrawerExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Drawers\Scripts\CustomGroupExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Drawers\Scripts\GenericDrawerExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Drawers\Scripts\GenericMenuExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Drawers\Scripts\HealthBarExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Drawers\Scripts\InstancedDrawerExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Drawers\Scripts\MinesweeperExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Drawers\Scripts\PriorityExamples.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Drawers\Scripts\ReflectionExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Drawers\Scripts\StringMemberHelperExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Custom Drawers\Scripts\ValidationExample.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Character\Character.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Character\CharacterAlignment.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Character\CharacterEquipment.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Character\CharacterOverview.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Character\CharacterStats.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Items\Armor.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Items\ConsumableItem.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Items\EquipableItem.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Items\Item.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Items\ItemTypes.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Items\WeaponItem.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Misc\ItemSlot.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Misc\StatList.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Misc\StatType.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Scripts\Misc\StatValue.cs" />
+    <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\VectorIntFormatters.cs" />
     <Compile Include="Assets\Plugins\Sirenix\Odin Serializer\OdinBuildAutomation.cs" />
+    <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.xml" />
     <None Include="Assets\Plugins\Sirenix\Odin Serializer\EditorOnly\OdinSerializer.xml" />
+    <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.xml" />
+    <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.xml" />
+    <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.xml" />
+    <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.xml" />
+    <None Include="Assets\Plugins\Sirenix\Readme.txt" />
     <None Include="Assets\Plugins\Sirenix\Odin Serializer\Version.txt" />
+    <None Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Icons\icons_by_ravenmore.txt" />
+    <None Include="Assets\Plugins\Sirenix\Assemblies\link.xml" />
     <None Include="Assets\Plugins\Sirenix\Odin Serializer\AOT\link.xml" />
     <None Include="Assets\Plugins\Sirenix\Odin Serializer\License.txt" />
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
@@ -284,6 +404,24 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>C:/Projects/GameSystems/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Editor">
+      <HintPath>C:/Projects/GameSystems/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization.Config">
+      <HintPath>C:/Projects/GameSystems/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>C:/Projects/GameSystems/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities">
+      <HintPath>C:/Projects/GameSystems/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities.Editor">
+      <HintPath>C:/Projects/GameSystems/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="OdinSerializer">
       <HintPath>C:/Projects/GameSystems/Assets/Plugins/Sirenix/Odin Serializer/EditorOnly/OdinSerializer.dll</HintPath>

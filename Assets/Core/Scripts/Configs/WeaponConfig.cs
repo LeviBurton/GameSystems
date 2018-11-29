@@ -10,6 +10,7 @@ public class WeaponConfig : ScriptableObject
 {
     [Header("Properties")]
     public string weaponName;
+    public int range;
 
     [TextArea(3, 30)] public string Description;
     [PreviewSprite] public Sprite spriteIcon;
@@ -18,4 +19,13 @@ public class WeaponConfig : ScriptableObject
     public EWeaponType animationType;
 
     public GameObject weaponPrefab;
+
+    // TODO: consider what we need to put here.
+    // things like durability, any temporary bonuses, etc. etc.
+    public WeaponRuntime ToRuntime(WeaponSystem owner)
+    {
+        var runtime = new WeaponRuntime(owner, this);
+
+        return runtime;
+    }
 }

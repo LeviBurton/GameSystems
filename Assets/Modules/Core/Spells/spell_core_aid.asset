@@ -18,7 +18,7 @@ MonoBehaviour:
     cast this spell using\r\na spell slot of 3rd leveI or higher, a largel's hit points\r\nincrease
     by an additional 5 for each slot leveI above 2nd."
   spriteIcon: {fileID: 21300000, guid: dbe6f37e950b2db4599be80d656b8985, type: 3}
-  Level: 0
+  Level: 1
   behaviors:
   - {fileID: 11400000, guid: 67f88577aaba33b47819266d903d67f2, type: 2}
   targetVfx: {fileID: 11400000, guid: aa16bfc6f21728344b3d80448503c583, type: 2}

@@ -35,16 +35,11 @@ public class UI_ActionBar : MonoBehaviour
     List<UI_ActionSlot> actionSlots = new List<UI_ActionSlot>();
     Player rewiredPlayer = null;
 
-    private void OnEnable()
+    void OnEnable()
     {
         rewiredPlayer = ReInput.players.GetPlayer(0);
-        
     }
 
-    private void OnDisable()
-    {
-       
-    }
 
     public void Start()
     {
@@ -62,11 +57,6 @@ public class UI_ActionBar : MonoBehaviour
         for (int i = 0; i < actions.Count; i++)
         {
             actionSlots[i].SetActionConfig(actions[i]);
-
-            //if (i == 0)
-            //{
-            //    actionSlots[i].GetComponentInChildren<Button>().Select();
-            //}
         }
     }
 

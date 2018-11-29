@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vfxName: VfxBurn Motherfucker Burn
   behaviors:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 522819c002b3a544ebcd79001e096571, type: 2}
   vfxPrefab: {fileID: 1851957978298920, guid: dd9ccd37467a59944a1fd5fa67ec3131, type: 2}

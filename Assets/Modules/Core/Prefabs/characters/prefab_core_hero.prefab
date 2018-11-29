@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 114692258387419682}
   - component: {fileID: 114038882779573966}
   - component: {fileID: 114042657153975496}
+  - component: {fileID: 114088828087326662}
   m_Layer: 0
   m_Name: prefab_core_hero
   m_TagString: Untagged
@@ -1990,6 +1991,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSpeed: 1
+  idleCheckTimeMin: 10
+  idleCheckTimeMax: 60
+--- !u!114 &114088828087326662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1200493190173732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fc147664605eb4f8317e6acf73f151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkForInteractables: 0
+  layersToCheck:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &114207310718769094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2071,23 +2089,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a029eee6062a09247a895b47bd4bef1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onWeaponEquipped:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114042657153975496}
-        m_MethodName: SetAnimatorWeaponConfig
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEvent_WeaponEquipped, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   weaponConfig: {fileID: 11400000, guid: 29839bedea791174c9340916180fda8e, type: 2}
+  attachPoint_Hand_Right: {fileID: 0}
+  attachPoint_Hand_Left: {fileID: 0}
+  attachPoint_Waist_Right: {fileID: 0}
+  attachPoint_Waist_Left: {fileID: 0}
+  attachPoint_Back: {fileID: 0}
+  onEquipWeapon:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEvent_WeaponSystem_Equip, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onUseWeapon:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEvent_WeaponSystem_Use, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114701185501000142
 MonoBehaviour:
   m_ObjectHideFlags: 1

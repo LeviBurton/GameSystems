@@ -18,11 +18,11 @@ TagManager:
   - PostProcessing
   - 
   - Walkable
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Doors
+  - Walls
+  - Hero
+  - Enemy
+  - NPC
   - 
   - 
   - 

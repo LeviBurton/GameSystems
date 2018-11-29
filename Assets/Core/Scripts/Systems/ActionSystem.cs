@@ -6,11 +6,11 @@ public class ActionSystem : MonoBehaviour
 {
     public List<ActionConfig> actions;
 
-	void Start ()
+    void Start()
     {
-		foreach (var action in actions)
+        foreach (var action in actions)
         {
             action.Execute(this);
         }
-	}
+    }
 }

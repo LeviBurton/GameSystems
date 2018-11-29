@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
+// The PlayerController currently acts as a player input event dispatcher.
+// It also allows global control over the main menu (so we can always exit, etc.)
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
@@ -34,6 +35,13 @@ public class PlayerController : MonoBehaviour
             ToggleMainMenu();
         }
 
+        // if we are in the "UI", then we don't want to process any input other than UI input.
+        foreach (ControllerMap map in rewiredPlayer.controllers.maps.GetAllMapsInCategory("UI"))
+        {
+            if (map.enabled)
+                return;
+        }
+
         Vector3 inputMove = new Vector3(rewiredPlayer.GetAxis("move_side"), 0, rewiredPlayer.GetAxis("move_forward"));
         onInputMove.Invoke(inputMove);
 
@@ -42,6 +50,8 @@ public class PlayerController : MonoBehaviour
 
         float inputCameraZoom = rewiredPlayer.GetAxis("camera_zoom");
         onCameraZoom.Invoke(inputCameraZoom);
+
+       // Debug.LogFormat("{0} {1} {2}", inputMove, inputCameraRotate, inputCameraZoom);
     }
 
     void ToggleMainMenu()

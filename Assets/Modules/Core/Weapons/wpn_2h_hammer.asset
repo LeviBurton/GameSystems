@@ -9,10 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdd08ca44e1c7494db191f7e2e0fad20, type: 3}
-  m_Name: wpn_one_hand_sword
+  m_Name: wpn_2h_hammer
   m_EditorClassIdentifier: 
-  weaponName: One-Hand Sword
-  Description: The trusty, and legendary, One-Hand Sword.
-  spriteIcon: {fileID: 0}
-  weaponAnimationType: 0
-  weaponPrefab: {fileID: 0}
+  weaponName: Hammer
+  range: 0
+  Description: Large, slow 2 handed hammer
+  spriteIcon: {fileID: 21300000, guid: e6b241e893089a444ada2b7be8ed5f7b, type: 3}
+  animationType: 1
+  weaponPrefab: {fileID: 100000, guid: 11de9c7de4664584e976bd733701ae49, type: 2}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rewired;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,13 @@ using UnityEngine;
 [RequireComponent(typeof(ClassSystem))]
 [RequireComponent(typeof(HealthSystem))]
 [RequireComponent(typeof(CharacterSystem))]
+[RequireComponent(typeof(InteractableSystem))]
 public class HeroSystem : MonoBehaviour
 {
     public HeroRuntime heroRuntime;
+  
+    InteractableSystem interactableSystem;
+    Player rewiredPlayer = null;
 
     void Start()
     {
@@ -19,6 +24,17 @@ public class HeroSystem : MonoBehaviour
 
         var gameSystem = FindObjectOfType<GameSystem>();
         gameSystem.heroes.Add(this);
+
+        interactableSystem = GetComponent<InteractableSystem>();
+        rewiredPlayer = ReInput.players.GetPlayer(0);
+    }
+
+    void Update()
+    {
+        if (interactableSystem.InteractableInSight() && rewiredPlayer.GetButtonDown("action_interact"))
+        {
+            interactableSystem.Interact(EInteractType.Toggle);
+        }
     }
 
     public void OnSave(MySaveGame saveGame)

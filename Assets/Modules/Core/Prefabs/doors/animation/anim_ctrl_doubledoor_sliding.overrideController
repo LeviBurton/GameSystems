@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: anim_ctrl_doubledoor_sliding
+  m_Controller: {fileID: 9100000, guid: 7ccb849742c7ea841b193fe7b4c254bd, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 32126ffea73c4f649866a18845609367, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 45081f9f84c237c46af5778a56e3729c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cfab7c782bc2d5245bb36258964d0059, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cd9fa637587962f47b4d080f20adce4b, type: 2}

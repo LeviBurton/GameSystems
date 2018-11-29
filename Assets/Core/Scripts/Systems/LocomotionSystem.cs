@@ -74,7 +74,7 @@ public class LocomotionSystem : MonoBehaviour
         }
     }
 
-    // TODO: consider moving this somewhere else.
+    // TODO: consider moving this somewhere else or renaming them or just making them a single function that takes a percent.
     public bool SetWalking()
     {
         forwardSpeed = maxForwardSpeed * 0.2f;

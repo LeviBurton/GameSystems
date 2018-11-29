@@ -25,6 +25,5 @@ public class UI_ActionSlot_Details : MonoBehaviour
         nameText.text = actionSlot.actionConfig.actionName;
         typeText.text = actionSlot.actionConfig.actionType;
         descriptionText.text = actionSlot.actionConfig.Description;
-      
     }
 }

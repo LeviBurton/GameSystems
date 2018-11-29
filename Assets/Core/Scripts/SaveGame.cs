@@ -29,6 +29,7 @@ public class MySaveGame : SaveGame
     public List<HeroRuntime> heroRuntimes = new List<HeroRuntime>();
     public List<EnemyRuntime> enemyRuntimes = new List<EnemyRuntime>();
     public List<NpcRuntime> npcRuntimes = new List<NpcRuntime>();
+    public List<DoorRuntime> doorRuntimes = new List<DoorRuntime>();
 
     public MySaveGame(int? version, string saveSlotName = "Default")
     {

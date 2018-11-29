@@ -15,6 +15,5 @@ public class AbilitySystem : MonoBehaviour
             var abilityRuntime = config.ToRuntime(this);
             abilityRuntimes.Add(abilityRuntime);
         }
-
     }
 }

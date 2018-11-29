@@ -32,7 +32,6 @@ public class SaveGameSystem : MonoBehaviour
     public List<SaveSlot> GetSaveSlots()
     {
         var slots = new List<SaveSlot>();
-
         var dirInfo = new DirectoryInfo(GetSlotSavePath());
         var fileInfos = dirInfo.GetFiles().OrderBy(p => p.LastWriteTime).ToList();
 
@@ -42,6 +41,9 @@ public class SaveGameSystem : MonoBehaviour
 
             slots.Add(new SaveSlot(i + 1, Path.GetFileNameWithoutExtension(fileInfo.Name), fileInfo.CreationTime));
         }
+
+        if (!slots.Any())
+            return slots;
 
         return slots.Reverse<SaveSlot>().ToList();
     }
@@ -102,6 +104,9 @@ public class SaveGameSystem : MonoBehaviour
     // the scene is completely loaded.
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // Load environment things such as Doors, Traps, etc.
+        LoadEnvironment();
+
         // Setup HeroSystems
         LoadHeroes();
 
@@ -112,7 +117,30 @@ public class SaveGameSystem : MonoBehaviour
         LoadNpcs();
     }
 
-    private void LoadNpcs()
+    void LoadEnvironment()
+    {
+        var doors = FindObjectsOfType<DoorSystem>();
+
+        foreach (var runtime in saveGame.doorRuntimes)
+        {
+            DoorSystem foundSystem = null;
+
+            foreach (var door in doors)
+            { 
+                if (door.GetComponent<SaveGameIdSystem>().SaveGameId == runtime.saveGameId)
+                {
+                    foundSystem = door;
+                }
+            }
+
+            if (foundSystem)
+            {
+                foundSystem.OnLoad(saveGame);
+            }
+        }
+    }
+
+    void LoadNpcs()
     {
         var npcs = FindObjectsOfType<NpcSystem>();
         foreach (var runtime in saveGame.npcRuntimes)
@@ -145,7 +173,7 @@ public class SaveGameSystem : MonoBehaviour
         }
     }
 
-    private void LoadEnemies()
+    void LoadEnemies()
     {
         var enemies = FindObjectsOfType<EnemySystem>();
         foreach (var runtime in saveGame.enemyRuntimes)
@@ -178,7 +206,7 @@ public class SaveGameSystem : MonoBehaviour
         }
     }
 
-    private void LoadHeroes()
+    void LoadHeroes()
     {
         var heroesInScene = FindObjectsOfType<HeroSystem>();
         foreach (var heroRuntime in saveGame.heroRuntimes)
@@ -278,9 +306,9 @@ public class SaveGameSystem : MonoBehaviour
             {
                 return formatter.Deserialize(stream) as SaveGame;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return null;
+                throw ex;
             }
         }
     }

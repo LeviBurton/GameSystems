@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Sirenix.OdinInspector;
 
 /// <summary>
 /// This system is necessary for our save game system to work.
@@ -13,5 +13,11 @@ using UnityEngine;
 /// </summary>
 public class SaveGameIdSystem : MonoBehaviour
 {
-    public string SaveGameId = string.Empty;
+    [InlineButton("GenerateNewId", "New")]
+    public string SaveGameId;
+
+    void GenerateNewId()
+    {
+        SaveGameId = Guid.NewGuid().ToString();
+    }
 }
