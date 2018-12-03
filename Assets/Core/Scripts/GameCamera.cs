@@ -1,28 +1,75 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Rewired;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+[ExecuteInEditMode]
 public class GameCamera : MonoBehaviour
 {
     public Transform targetLookAtOffset;
     public Camera mainCamera;
     public Transform target;
+    public Transform maxZoomCameraTransform;
+
     public float followingSpeed = 0.3f;
     public float followingMaxSpeed = 30.0f;
     public float rotationSpeed = 10.0f;
     public float zoomSpeed = 10.0f;
-    public float maxZoom = 50.0f;
+
     public float minZoom = 2.0f;
+    public float maxZoom = 50.0f;
+
     public float zoomControlSensitivity = 0.25f;
+
+    public AnimationCurve curve;
 
     Vector3 positionDampVelocity;
     Vector3 zoomDampVelocity;
 
     float inputZoom;
+
+    [OnValueChanged("CurrentZoomChanged")]
+    public float currentZoom;
+
+#if UNITY_EDITOR
+    void CurrentZoomChanged()
+    {
+        EditorUtility.SetDirty(this);
+    }
+#endif
+
     float inputRotate;
+    float distanceToTarget;
+    float zoomPercent;
+
+    Vector3 directionToTarget;
+    Transform cameraTarget;
+    Vector3 startPosition;
+    Quaternion startRotation;
+    public SplineComponent spline;
+
+    Player rewiredPlayer = null;
+
+    void OnEnable()
+    {
+        rewiredPlayer = ReInput.players.GetPlayer(0);
+
+        startPosition = mainCamera.transform.position;
+        startRotation = mainCamera.transform.rotation;
+
+        LookAtTarget();
+        currentZoom = maxZoom;
+    }
 
     void LateUpdate()
     {
+        distanceToTarget = Vector3.Distance(mainCamera.transform.position, targetLookAtOffset.position);
+        directionToTarget = targetLookAtOffset.position - mainCamera.transform.position;
+        zoomPercent = distanceToTarget.Map(minZoom, maxZoom, 0, 1);
+   
         if (target != null)
         {
             FollowTarget();
@@ -50,31 +97,25 @@ public class GameCamera : MonoBehaviour
 
     void LookAtTarget()
     {
-        mainCamera.transform.LookAt(transform.position + transform.InverseTransformPoint(targetLookAtOffset.position));
+        mainCamera.transform.LookAt(targetLookAtOffset.position);
     }
 
     private void ZoomCamera()
     {
-        if (Mathf.Abs(inputZoom) < zoomControlSensitivity)
-            return;
+        currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
 
-        var distanceToTargetOffset = Vector3.Distance(mainCamera.transform.position, targetLookAtOffset.position);
+        var percent = currentZoom.Map(minZoom, maxZoom, 0, 1);
 
-        // check to see if we are within the min/max extents, or at the extents.
-        // when at minZoom allow zooming out, when at maxZoom allow zooming in, when between, allow zoom in/out.
-        bool bCanZoom = distanceToTargetOffset <= minZoom && inputZoom < 0 ||
-                        distanceToTargetOffset >= maxZoom && inputZoom > 0 ||
-                        distanceToTargetOffset < maxZoom && distanceToTargetOffset > minZoom;
-
-        if (bCanZoom)
-        {
-            mainCamera.transform.position += mainCamera.transform.forward * inputZoom * zoomSpeed * Time.unscaledDeltaTime;
-        }
+        var position = transform.TransformPoint(spline.GetPoint(percent));
+        mainCamera.transform.position = position;
     }
 
     public void SetCameraZoom(float zoom)
     {
+
         inputZoom = zoom;
+        currentZoom -= zoom;
+
     }
 
     public void SetCameraRotation(float rotate)

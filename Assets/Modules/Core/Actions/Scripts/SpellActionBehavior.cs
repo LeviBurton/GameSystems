@@ -7,7 +7,7 @@ public class SpellActionBehavior : ActionBehavior
 {
     public override void Execute(ActionSystem system, ActionConfig config)
     {
-        Debug.LogFormat("{0} {1} SpellActionBehavior", system.name, config.actionName);
+        Logging.LogFormat("{0} {1} SpellActionBehavior", system.name, config.actionName);
 
         var spellSystem = system.GetComponent<SpellSystem>();
 

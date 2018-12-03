@@ -109,12 +109,12 @@ public class DoorSystem : MonoBehaviour
     // These are just test handling of the events we send.
     public void DoorOpenHandler()
     {
-        Debug.Log("Door Opened");
+        Logging.LogFormat("Door Opened");
     }
 
     public void DoorCloseHandler()
     {
-        Debug.Log("Door Closed");
+        Logging.LogFormat("Door Closed");
     }
     #endregion
 
@@ -134,7 +134,7 @@ public class DoorSystem : MonoBehaviour
 
     public void OnSave(MySaveGame saveGame)
     {
-        Debug.Log("DoorSystem OnSave: " + GetComponent<SaveGameIdSystem>().SaveGameId);
+        Logging.LogFormat("DoorSystem OnSave: " + GetComponent<SaveGameIdSystem>().SaveGameId);
 
         var saveGameIdSystem = this.GetComponent<SaveGameIdSystem>();
         var runtime = new DoorRuntime();
@@ -145,7 +145,7 @@ public class DoorSystem : MonoBehaviour
 
     public void OnLoad(MySaveGame saveGame)
     {
-        Debug.Log("DoorSystem OnLoad");
+        Logging.LogFormat("DoorSystem OnLoad");
 
         var saveGameIdSystem = this.GetComponent<SaveGameIdSystem>();
         var runtime = saveGame.doorRuntimes.SingleOrDefault(x => x.saveGameId == saveGameIdSystem.SaveGameId);

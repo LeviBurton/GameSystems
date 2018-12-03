@@ -39,7 +39,7 @@ public class HeroSystem : MonoBehaviour
 
     public void OnSave(MySaveGame saveGame)
     {
-        Debug.Log("HeroSystem OnSave: " + GetComponent<SaveGameIdSystem>().SaveGameId);
+        Logging.LogFormat("HeroSystem OnSave: " + GetComponent<SaveGameIdSystem>().SaveGameId);
 
         var saveGameIdSystem = this.GetComponent<SaveGameIdSystem>();
         var abilitySystem = GetComponent<AbilitySystem>();
@@ -61,7 +61,7 @@ public class HeroSystem : MonoBehaviour
 
     public void OnLoad(MySaveGame saveGame)
     {
-        Debug.Log("HeroSystem OnLoad");
+        Logging.LogFormat("HeroSystem OnLoad");
 
         var saveGameIdSystem = this.GetComponent<SaveGameIdSystem>();
         var abilitySystem = GetComponent<AbilitySystem>();

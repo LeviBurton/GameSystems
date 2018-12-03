@@ -243,7 +243,7 @@ public class SaveGameSystem : MonoBehaviour
     {
         var slotPath = GetSlotJsonPath(slotName);
 
-        Debug.LogFormat("Loading Game from slot: {0}", slotPath);
+        Logging.LogFormat("Loading Game from slot: {0}", slotPath);
 
         MySaveGame saveGame = null;
 
@@ -278,7 +278,7 @@ public class SaveGameSystem : MonoBehaviour
 
         Directory.CreateDirectory(Path.GetDirectoryName(slotPath));
 
-        Debug.LogFormat("Saving Game to slot: {0}", slotPath);
+        Logging.LogFormat("Saving Game to slot: {0}", slotPath);
 
         try
         {
@@ -298,7 +298,7 @@ public class SaveGameSystem : MonoBehaviour
 
         var slotPath = GetSlotPath(slotName);
 
-        Debug.LogFormat("Loading Game from slot: {0}", slotPath);
+        Logging.LogFormat("Loading Game from slot: {0}", slotPath);
 
         using (FileStream stream = new FileStream(slotPath, FileMode.Open))
         {
@@ -320,7 +320,7 @@ public class SaveGameSystem : MonoBehaviour
         var slotPath = GetSlotPath(saveGame.slotName);
         saveGame.slotName = slotPath;
 
-        Debug.LogFormat("Saving Game to slot: {0}", slotPath);
+        Logging.LogFormat("Saving Game to slot: {0}", slotPath);
 
         // create the diretory if it does not exist.  does nothing if already exists.
         Directory.CreateDirectory(Path.GetDirectoryName(slotPath));
