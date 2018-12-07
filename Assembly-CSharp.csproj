@@ -160,6 +160,8 @@
     <Compile Include="Assets\Core\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Core\Scripts\PreviewSpriteAttribute.cs" />
     <Compile Include="Assets\Core\Scripts\SaveGame.cs" />
+    <Compile Include="Assets\Core\Scripts\Spline\BezierCurve.cs" />
+    <Compile Include="Assets\Core\Scripts\Spline\CatmullRomSpline.cs" />
     <Compile Include="Assets\Core\Scripts\Spline\ISpline.cs" />
     <Compile Include="Assets\Core\Scripts\Spline\SplineComponent.cs" />
     <Compile Include="Assets\Core\Scripts\Spline\SplineFollower.cs" />

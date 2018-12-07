@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 198013585202327278}
   - component: {fileID: 199892734104114174}
   m_Layer: 0
-  m_Name: prefab_vfx_core_heal
+  m_Name: 1
   m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

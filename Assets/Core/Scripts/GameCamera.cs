@@ -9,10 +9,11 @@ using UnityEditor;
 [ExecuteInEditMode]
 public class GameCamera : MonoBehaviour
 {
+    public BezierCurve curve;
+
     public Transform targetLookAtOffset;
     public Camera mainCamera;
     public Transform target;
-    public Transform maxZoomCameraTransform;
 
     public float followingSpeed = 0.3f;
     public float followingMaxSpeed = 30.0f;
@@ -23,8 +24,6 @@ public class GameCamera : MonoBehaviour
     public float maxZoom = 50.0f;
 
     public float zoomControlSensitivity = 0.25f;
-
-    public AnimationCurve curve;
 
     Vector3 positionDampVelocity;
     Vector3 zoomDampVelocity;
@@ -53,73 +52,66 @@ public class GameCamera : MonoBehaviour
 
     Player rewiredPlayer = null;
 
-    void OnEnable()
+    float totalCameraCurveLength;
+
+    private void Start()
     {
         rewiredPlayer = ReInput.players.GetPlayer(0);
-
-        startPosition = mainCamera.transform.position;
-        startRotation = mainCamera.transform.rotation;
-
         LookAtTarget();
-        currentZoom = maxZoom;
+        currentZoom = 0;
     }
+
 
     void LateUpdate()
     {
-        distanceToTarget = Vector3.Distance(mainCamera.transform.position, targetLookAtOffset.position);
-        directionToTarget = targetLookAtOffset.position - mainCamera.transform.position;
-        zoomPercent = distanceToTarget.Map(minZoom, maxZoom, 0, 1);
-   
         if (target != null)
         {
+            ZoomCamera();
             FollowTarget();
             RotateAroundTarget();
             LookAtTarget();
-            ZoomCamera();
         }
     }
 
     void FollowTarget()
     {
-        if (Vector3.Distance(target.position, transform.position) > 0.01f)
-        {
-            transform.position = Vector3.SmoothDamp(transform.position, target.position, ref positionDampVelocity, followingSpeed, followingMaxSpeed, Time.unscaledDeltaTime);
-        }
+        transform.position = Vector3.SmoothDamp(transform.position, target.position, ref positionDampVelocity, followingSpeed, followingMaxSpeed, Time.unscaledDeltaTime);
     }
 
     void RotateAroundTarget()
     {
         if (Mathf.Abs(inputRotate) > 0.1f)
         {
-            transform.Rotate(inputRotate * Vector3.up * rotationSpeed * Time.unscaledDeltaTime);
+            transform.Rotate(inputRotate * Vector3.up);
         }
     }
 
     void LookAtTarget()
     {
-        mainCamera.transform.LookAt(targetLookAtOffset.position);
+        mainCamera.transform.LookAt(targetLookAtOffset.transform.position);
     }
 
     private void ZoomCamera()
-    {
-        currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
+    {  
+        totalCameraCurveLength = curve.GetLengthSimpsons(0f, 1f);
 
-        var percent = currentZoom.Map(minZoom, maxZoom, 0, 1);
+        currentZoom = Mathf.Clamp(currentZoom, 0, totalCameraCurveLength);
 
-        var position = transform.TransformPoint(spline.GetPoint(percent));
-        mainCamera.transform.position = position;
+        float t = curve.FindTValue(currentZoom, totalCameraCurveLength);
+       
+        var position = curve.DeCasteljausAlgorithm(t);
+     
+        mainCamera.transform.position = transform.TransformPoint(position);
     }
 
     public void SetCameraZoom(float zoom)
     {
-
         inputZoom = zoom;
-        currentZoom -= zoom;
-
+        currentZoom += zoom * zoomSpeed * Time.unscaledDeltaTime;
     }
 
     public void SetCameraRotation(float rotate)
     {
-        inputRotate = rotate;
+        inputRotate = rotate * rotationSpeed * Time.unscaledDeltaTime;
     }
 }
