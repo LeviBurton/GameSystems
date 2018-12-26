@@ -40,7 +40,6 @@ public class UI_ActionBar : MonoBehaviour
         rewiredPlayer = ReInput.players.GetPlayer(0);
     }
 
-
     public void Start()
     {
         foreach (Transform child in transform)

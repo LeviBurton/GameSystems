@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public enum EInteractType
 {
-    Open, Close, Toggle
+    Open, Close, Toggle, Unlock, Disarm
 };
 
 public struct InteractableEvent
